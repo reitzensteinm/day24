@@ -4,7 +4,7 @@
 
 (def tp (cp/threadpool (cp/ncpus)))
 
-(defn get-input [d]
+(defn get-input []
   (slurp "data.txt"))
 
 (defn machine [input]
@@ -64,7 +64,7 @@
                                (keyword %)
                                (cs/parse-int %))
                             (cs/split s " ")))
-        instrs (mapv parse-instr (cs/lines (get-input 24)))
+        instrs (mapv parse-instr (cs/lines (get-input)))
         human-num #(apply str (map first %))]
     (time
       (mapv human-num
